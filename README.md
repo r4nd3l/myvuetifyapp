@@ -27,6 +27,12 @@ cd myvuetifyapp
 
 ### 2. Development (with hot reload)
 
+Optional to pre-run the node modules, avoid vite user issue
+
+```bash
+npm install
+```
+
 Run inside Docker with **Vite dev server**:
 
 ```bash
