@@ -1,12 +1,23 @@
 version: "3.9"
+
 services:
   app-dev:
     build:
       context: .
       dockerfile: Dockerfile.dev
+    image: myvuetifyapp:dev # 👈 fixed tag for dev
     ports:
       - "5173:5173"
     volumes:
       - .:/app
+    user: "${UID:-1000}:${GID:-1000}" # 👈 match host user
     environment:
-      - CHOKIDAR_USEPOLLING=true # helps file watching inside Docker
+      - CHOKIDAR_USEPOLLING=true
+
+  app-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: myvuetifyapp:prod # 👈 fixed tag for prod
+    ports:
+      - "8080:80"
